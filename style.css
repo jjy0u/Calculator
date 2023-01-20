@@ -1,0 +1,18 @@
+body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.display {
+  width: 100%;
+  background-color: aquamarine;
+  height: 30vh;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 1rem;
+}/*# sourceMappingURL=style.css.map */
