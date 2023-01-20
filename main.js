@@ -2,28 +2,35 @@ const display = document.querySelector("#display")
 const numberButtons = document.querySelectorAll(".number")
 const operatorButtons = document.querySelectorAll(".operator")
 
-let x = 0
+let expression = ""
+let operator
 
 const numberButtonClickEvent = (event) =>{
-    display.innerHTML += event.target.value
-    x = display.innerHTML
-    if (x.slice(-1).test(/[^0-9]/$)) {
-        display.innerHTML = ""
+    if (expression.slice(-1) == operator) {
+        display.innerText = ""
     } 
+    display.innerHTML += event.target.value
+    expression += event.target.value
+    console.log(expression)
+}
+
+const operatorButtonClickEvent = (event) =>{
+    if (event.target.value == "+") {
+        operator = "+"
+    } else if (event.target.value == "-") {    
+        operator = "-"
+    } else if (event.target.value == "/") {    
+        operator = "/"
+    } else if (event.target.value == "x") {    
+        operator = "*"
+    }
+    
+    expression = display.innerHTML + operator
 }
 
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener("click", numberButtonClickEvent)
 })
-
-const operatorButtonClickEvent = (event) =>{
-    if (event.target.value == "+") {
-        x.concat("+")
-    } /*else if (value == "-")*/
-}
-
-console.log(x)
-
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", operatorButtonClickEvent)
 })
