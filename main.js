@@ -144,6 +144,18 @@ const percentButtonClickEvent = (event) =>{
 console.log(expression)
 }
 
+const negativeButtonClickEvent = (event) =>{
+        let negativeNumber = Number(display.innerHTML) * -1
+        display.innerHTML = String(negativeNumber)
+    
+        if (expression.includes(operator)){
+            display.innerHTML = String(negativeNumber)
+            expression = expression.slice(0, expression.indexOf(operator)) + operator + display.innerHTML
+        }else{
+            expression = display.innerHTML
+        }
+    console.log(expression)
+}
 
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener("click", numberButtonClickEvent)
@@ -157,4 +169,4 @@ deleteButton.addEventListener("click", deleteButtonClickEvent)
 
 
 percentButton.addEventListener("click", percentButtonClickEvent)
-//negativeButton.addEventListener("click", negativeButtonClickEvent)
+negativeButton.addEventListener("click", negativeButtonClickEvent)
