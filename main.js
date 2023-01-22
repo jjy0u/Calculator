@@ -39,12 +39,12 @@ const turnStringIntoExpression = (expression) => {
 }
 
 const numberButtonClickEvent = (event) =>{
-    //takes the last character of the expression and if it is an operator, when a number is clicked the previous display will clear
+//takes the last character of the expression and if it is an operator, when a number is clicked the previous display will clear
     if (expression.slice(-1) == operator) {
         display.innerText = ""
     } 
 
-    //if the display is just a 0 then a button is pressed, remove the 0 - solves issue of multiple unecessary 0's before number NOTE: can this be combined with line 13 if statement with an ||?
+//if the display is just a 0 then a button is pressed, remove the 0 - solves issue of multiple unecessary 0's before number NOTE: can this be combined with line 13 if statement with an ||?
     if(display.innerHTML == 0) {
         display.innerHTML = ""
     } else if (display.innerHTML == ".") {
@@ -56,26 +56,26 @@ const numberButtonClickEvent = (event) =>{
         expression = ""
     }
     
-    //adds the button clicked to whats already in the display rather than replacing it
+//adds the button clicked to whats already in the display rather than replacing it
     display.innerHTML += event.target.value
-    //adds a number to the string expression when button clicked
+//adds a number to the string expression when button clicked
     expression += event.target.value
     console.log(expression)
 
-    //changes the AC button back to C, allowing a reset if there is a number
+//changes the AC button back to C, allowing a reset if there is a number
     if (resetButton.value == "AC"){
         resetButton.value = "C"
     }
 }
 
 const operatorButtonClickEvent = (event) =>{
-    //allows bypassing of the equal sign operator in the expression, so further calcs can be done after pressing =.
+//allows bypassing of the equal sign operator in the expression, so further calcs can be done after pressing =.
     if(expression.slice(-1) == "=") {
         expression = display.innerHTML
     }
 
 
-    //stores the operator in a variable to add to the expression
+//stores the operator in a variable to add to the expression
     if (event.target.value == "+") {
         operator = "+"
         display.innerHTML = turnStringIntoExpression(expression).toString()
@@ -103,7 +103,7 @@ console.log(expression)
 
 
 const resetButtonClickEvent = (event) =>{
-    //when the C button is pressed, will change to AC
+//when the C button is pressed, will change to AC
     if (event.target.value == "C") {
         event.target.value = "AC"
     }
@@ -119,6 +119,7 @@ const resetButtonClickEvent = (event) =>{
 }
 
 const deleteButtonClickEvent = (event) =>{
+//same idea as AC, using slice to give the expression and display without the final character, unless the final character is an operator
     if (expression.slice(-1) == operator){
         expression
         display.innerHTML
@@ -126,6 +127,21 @@ const deleteButtonClickEvent = (event) =>{
         expression = expression.slice(0,-1)
         display.innerHTML = display.innerHTML.slice(0,-1)
     }
+}
+
+const percentButtonClickEvent = (event) =>{
+    //converts display into a number to divide by 100 then displays that percentage
+    let percent = Number(display.innerHTML)/100
+    display.innerHTML = String(percent)
+
+    //if the expression has an operator, will take a slice of the expression up to the operator then add the new percentage display
+    if (expression.includes(operator)){
+        display.innerHTML = String(percent)
+        expression = expression.slice(0, expression.indexOf(operator)) + operator + display.innerHTML
+    }else{
+        expression = display.innerHTML
+    }
+console.log(expression)
 }
 
 
@@ -140,5 +156,5 @@ resetButton.addEventListener("click", resetButtonClickEvent)
 deleteButton.addEventListener("click", deleteButtonClickEvent)
 
 
-//percentButton.addEventListener("click", percentButtonClickEvent)
+percentButton.addEventListener("click", percentButtonClickEvent)
 //negativeButton.addEventListener("click", negativeButtonClickEvent)
