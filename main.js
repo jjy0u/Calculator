@@ -1,7 +1,7 @@
 const display = document.querySelector("#display")
 const numberButtons = document.querySelectorAll(".number")
 const operatorButtons = document.querySelectorAll(".operator")
-const resetButtons = document.querySelectorAll(".reset")
+const resetButton = document.querySelector("#reset")
 const percentButton = document.querySelector("#percent")
 const negativeButton = document.querySelector("#negative")
 
@@ -47,11 +47,11 @@ const numberButtonClickEvent = (event) =>{
     //if the display is just a 0 then a button is pressed, remove the 0 - solves issue of multiple unecessary 0's before number NOTE: can this be combined with line 13 if statement with an ||?
     if(display.innerHTML == 0) {
         display.innerHTML = ""
-    } //else if (numberButton = ".") {
-        //display.innerHTML == "0"
-    //}
+    } else if (display.innerHTML == ".") {
+        display.innerHTML = "0."
+    }
     
-
+//resets the expression to nothing after the equal sign is clicked (starts a new expression - only if a number button is pressed after the equal)
     if(expression.slice(-1) == "=") {
         expression = ""
     }
@@ -61,6 +61,12 @@ const numberButtonClickEvent = (event) =>{
     //adds a number to the string expression when button clicked
     expression += event.target.value
     console.log(expression)
+
+    //changes the AC button back to C, allowing a reset if there is a number
+    if (resetButton.value == "AC"){
+        resetButton.value = "C"
+        //expression = ""
+    }
 }
 
 const operatorButtonClickEvent = (event) =>{
@@ -89,11 +95,29 @@ const operatorButtonClickEvent = (event) =>{
         display.innerHTML = turnStringIntoExpression(expression).toString()
         
     }
-    
 
 //whatever is in the display has the operator added to it, forming the expression
     expression = display.innerHTML + operator
 }
+console.log(expression)
+
+
+const resetButtonClickEvent = (event) =>{
+    if (event.target.value == "C") {
+        //display.innerHTML = "0"
+        event.target.value = "AC"
+    }
+
+    if (!expression.includes(operator)){
+        expression = ""
+        display.innerHTML = "0"
+    } else {
+        display.innerHTML = "0"
+    }
+
+    //expression = display.innerHTML + operator
+}
+
 
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener("click", numberButtonClickEvent)
@@ -102,9 +126,7 @@ operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", operatorButtonClickEvent)
 })
 
-//resetButtons.forEach((resetButton) => {
-//    resetButton.addEventListener("click", resetButtonClickEvent)
-//})
+resetButton.addEventListener("click", resetButtonClickEvent)
 
 //percentButton.addEventListener("click", percentButtonClickEvent)
 //negativeButton.addEventListener("click", negativeButtonClickEvent)
