@@ -4,7 +4,7 @@ const operatorButtons = document.querySelectorAll(".operator")
 const resetButton = document.querySelector("#reset")
 const percentButton = document.querySelector("#percent")
 const negativeButton = document.querySelector("#negative")
-
+const deleteButton = document.querySelector("#del")
 
 let expression = ""
 let operator
@@ -65,7 +65,6 @@ const numberButtonClickEvent = (event) =>{
     //changes the AC button back to C, allowing a reset if there is a number
     if (resetButton.value == "AC"){
         resetButton.value = "C"
-        //expression = ""
     }
 }
 
@@ -101,21 +100,20 @@ const operatorButtonClickEvent = (event) =>{
 }
 console.log(expression)
 
-
+//when the C button is pressed, will change to AC
 const resetButtonClickEvent = (event) =>{
     if (event.target.value == "C") {
-        //display.innerHTML = "0"
         event.target.value = "AC"
     }
 
-    if (!expression.includes(operator)){
+// if the expression includes an operator, display 0 and also slice the expression from index 0 to the operater (will not include the operator so then add the operator. this is to remove whatever number you wrote after the operator)
+    if (expression.includes(operator)){
+        display.innerHTML = "0"
+        expression = expression.slice(0, expression.indexOf(operator)) + operator
+    } else {
         expression = ""
         display.innerHTML = "0"
-    } else {
-        display.innerHTML = "0"
     }
-
-    //expression = display.innerHTML + operator
 }
 
 
@@ -127,6 +125,8 @@ operatorButtons.forEach((operatorButton) => {
 })
 
 resetButton.addEventListener("click", resetButtonClickEvent)
+deleteButton.addEventListener("click", deleteButtonClickEvent)
+
 
 //percentButton.addEventListener("click", percentButtonClickEvent)
 //negativeButton.addEventListener("click", negativeButtonClickEvent)
