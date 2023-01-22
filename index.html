@@ -8,33 +8,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="display">
-        <p id="display">0</p>
-    </div>
 
-    <div class="buttons">
-        <input id="reset" type="button" value="C">
-        <input id="percent" type="button" value="%">
-        <input id="negative" type="button" value="+/-">
-        <input class="operator" type="button" value="/">
-        <input class="number" type="button" value="7">
-        <input class="number" type="button" value="8">
-        <input class="number" type="button" value="9">
-        <input class="operator" type="button" value="x">
-        <input class="number" type="button" value="4">
-        <input class="number" type="button" value="5">
-        <input class="number" type="button" value="6">
-        <input class="operator" type="button" value="-">
-        <input class="number" type="button" value="1">
-        <input class="number" type="button" value="2">
-        <input class="number" type="button" value="3">
-        <input class="operator" type="button" value="+">
-        <input id="del" type="button" value="del">
-        <input class="number" id="0" type="button" value="0">
-        <input class="number" type="button" value=".">
-        <input class= operator id="equal" type="button" value="=">
+    <div class="calculator">
+        <div class="display">
+            <p id="display__text">0</p>
+        </div>
+
+        <div class="buttons">
+            <input class="buttons__button buttons__extra" id="buttons__reset" type="button" value="AC">
+            <input class="buttons__button buttons__extra" id="buttons__negative" type="button" value="+/-">
+            <input class="buttons__button buttons__extra" id="buttons__percent" type="button" value="%">
+            <input class="buttons__button buttons__operator" type="button" value="/">
+            <input class="buttons__button buttons__number" type="button" value="7">
+            <input class="buttons__button buttons__number" type="button" value="8">
+            <input class="buttons__button buttons__number" type="button" value="9">
+            <input class="buttons__button buttons__operator" type="button" value="x">
+            <input class="buttons__button buttons__number" type="button" value="4">
+            <input class="buttons__button buttons__number" type="button" value="5">
+            <input class="buttons__button buttons__number" type="button" value="6">
+            <input class="buttons__button buttons__operator" type="button" value="-">
+            <input class="buttons__button buttons__number" type="button" value="1">
+            <input class="buttons__button buttons__number" type="button" value="2">
+            <input class="buttons__button buttons__number" type="button" value="3">
+            <input class="buttons__button buttons__operator" type="button" value="+">
+            <input class="buttons__button buttons__extra"id="buttons__del" type="button" value="del">
+            <input class="buttons__button buttons__number" id="0" type="button" value="0">
+            <input class="buttons__button buttons__number" type="button" value=".">
+            <input class="buttons__button buttons__operator" id="equal" type="button" value="=">
+        </div>
     </div>
-    
     <script src="/main.js"></script>
 </body>
 </html>

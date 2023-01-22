@@ -1,10 +1,10 @@
-const display = document.querySelector("#display")
-const numberButtons = document.querySelectorAll(".number")
-const operatorButtons = document.querySelectorAll(".operator")
-const resetButton = document.querySelector("#reset")
-const percentButton = document.querySelector("#percent")
-const negativeButton = document.querySelector("#negative")
-const deleteButton = document.querySelector("#del")
+const display = document.querySelector("#display__text")
+const numberButtons = document.querySelectorAll(".buttons__number")
+const operatorButtons = document.querySelectorAll(".buttons__operator")
+const resetButton = document.querySelector("#buttons__reset")
+const percentButton = document.querySelector("#buttons__percent")
+const negativeButton = document.querySelector("#buttons__negative")
+const deleteButton = document.querySelector("#buttons__del")
 
 let expression = ""
 let operator

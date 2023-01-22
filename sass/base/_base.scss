@@ -1,0 +1,21 @@
+*{
+    font-family: $fonts;
+    color: $primary-text-colour;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.calculator{
+    margin: 1rem;
+    background-color: $dark-background-colour;
+    width: 320px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+    border-radius: 1rem;
+}

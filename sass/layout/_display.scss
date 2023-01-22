@@ -1,0 +1,13 @@
+.display{
+    height: 30vh;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+#display__text{
+    font-size: 60px;
+    padding-right: 0.8rem;
+    padding-left: 0.8rem;
+}
