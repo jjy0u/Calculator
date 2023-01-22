@@ -100,8 +100,10 @@ const operatorButtonClickEvent = (event) =>{
 }
 console.log(expression)
 
-//when the C button is pressed, will change to AC
+
+
 const resetButtonClickEvent = (event) =>{
+    //when the C button is pressed, will change to AC
     if (event.target.value == "C") {
         event.target.value = "AC"
     }
@@ -113,6 +115,16 @@ const resetButtonClickEvent = (event) =>{
     } else {
         expression = ""
         display.innerHTML = "0"
+    }
+}
+
+const deleteButtonClickEvent = (event) =>{
+    if (expression.slice(-1) == operator){
+        expression
+        display.innerHTML
+    } else {
+        expression = expression.slice(0,-1)
+        display.innerHTML = display.innerHTML.slice(0,-1)
     }
 }
 
