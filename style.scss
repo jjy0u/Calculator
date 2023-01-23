@@ -15,6 +15,23 @@
     font-size: 30px;
     }
 
+    &__button:active{
+        filter:brightness(150%)
+    }
+
+    &__operator:focus{
+        background-color: white;
+        color: $operator-buttons-colour;
+    }
+
+    &__operator:active{
+        filter:brightness(120%);
+    }
+
+    &__extra:active{
+        filter:brightness(120%);
+    }
+
     &__number{
         background-color: $number-buttons-colour;
     }
@@ -26,15 +43,17 @@
 
     &__extra{
         background-color: $extra-buttons-colour;
+        color: $secondary-text-colour;
     }
 }
 
-.buttons:focus{
-    color: red;
-    filter:brightness(50%);
+#buttons__equal:focus{
+    background-color: $operator-buttons-colour;
+    color: $primary-text-colour;
 }
 
 
 #buttons__del{
     background-color: $number-buttons-colour;
+    color: $primary-text-colour;
 }

@@ -49,6 +49,19 @@
   text-align: center;
   font-size: 30px;
 }
+.buttons__button:active {
+  filter: brightness(150%);
+}
+.buttons__operator:focus {
+  background-color: white;
+  color: rgb(243, 163, 60);
+}
+.buttons__operator:active {
+  filter: brightness(120%);
+}
+.buttons__extra:active {
+  filter: brightness(120%);
+}
 .buttons__number {
   background-color: rgb(50, 50, 50);
 }
@@ -58,13 +71,15 @@
 }
 .buttons__extra {
   background-color: rgb(165, 165, 165);
+  color: black;
 }
 
-.buttons:focus {
-  color: red;
-  filter: brightness(50%);
+#buttons__equal:focus {
+  background-color: rgb(243, 163, 60);
+  color: white;
 }
 
 #buttons__del {
   background-color: rgb(50, 50, 50);
+  color: white;
 }/*# sourceMappingURL=style.css.map */

@@ -18,11 +18,6 @@ const turnStringIntoExpression = (expression) => {
             return Number(element)
         })
         return expressionSplit[0] + expressionSplit[1]
-    } else if (expression.includes("-")){
-        const expressionSplit = expression.split("-").map((element) =>{
-            return Number(element)
-        })
-        return expressionSplit[0] - expressionSplit[1]
     } else if (expression.includes("*")){
         const expressionSplit = expression.split("*").map((element) =>{
             return Number(element)
@@ -33,6 +28,16 @@ const turnStringIntoExpression = (expression) => {
             return Number(element)
         })
         return expressionSplit[0] / expressionSplit[1]
+    } else if (expression.includes("--")){
+        const expressionSplit = expression.split("--").map((element) =>{
+            return Number(element)
+        })
+        return expressionSplit[0] + expressionSplit[1]
+    } else if (expression.includes("-")){
+        const expressionSplit = expression.split(expression.lastIndexOf("-")).map((element) =>{
+            return Number(element)
+        })
+        return expressionSplit[0] - expressionSplit[1]
     } else {
         return Number(expression)
     }
@@ -141,21 +146,32 @@ const percentButtonClickEvent = (event) =>{
     }else{
         expression = display.innerHTML
     }
-console.log(expression)
+    console.log(expression)
+
+    //allows converting number after equal is pressed into percentage, ready for use of further operators
+    if(expression.includes("=")) {
+        expression = expression.slice(expression.indexOf("=")).slice(1)
+    }
 }
 
 const negativeButtonClickEvent = (event) =>{
-        let negativeNumber = Number(display.innerHTML) * -1
-        display.innerHTML = String(negativeNumber)
+    let negativeNumber = Number(display.innerHTML) * -1
+    display.innerHTML = String(negativeNumber)
     
-        if (expression.includes(operator)){
-            display.innerHTML = String(negativeNumber)
-            expression = expression.slice(0, expression.indexOf(operator)) + operator + display.innerHTML
-        }else{
-            expression = display.innerHTML
-        }
+    if (expression.includes(operator)){
+        display.innerHTML = String(negativeNumber)
+        expression = expression.slice(0, expression.indexOf(operator)) + operator + display.innerHTML
+    }else{
+        expression = display.innerHTML
+    }
     console.log(expression)
+
+    //allows converting number after equal is pressed into a negative, ready for use of further operators
+    if(expression.includes("=")) {
+        expression = expression.slice(expression.indexOf("=")).slice(1)
+    }
 }
+
 
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener("click", numberButtonClickEvent)
@@ -163,10 +179,7 @@ numberButtons.forEach((numberButton) => {
 operatorButtons.forEach((operatorButton) => {
     operatorButton.addEventListener("click", operatorButtonClickEvent)
 })
-
 resetButton.addEventListener("click", resetButtonClickEvent)
 deleteButton.addEventListener("click", deleteButtonClickEvent)
-
-
 percentButton.addEventListener("click", percentButtonClickEvent)
 negativeButton.addEventListener("click", negativeButtonClickEvent)
