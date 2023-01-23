@@ -59,23 +59,30 @@ const numberButtonClickEvent = (event) =>{
         display.innerHTML = ""
     } 
     
-    if (event.target.value == "." && display.innerHTML == "0") {
+    //does not replace the 0 with a ., rather goes alongside it
+    if (event.target.value == "." && display.innerHTML == 0) {
         display.innerHTML = "0"
     }
 
-    if (display.innerHTML.includes(".") && event.target.value == "."){
-
-    }
     
 //resets the expression to nothing after the equal sign is clicked (starts a new expression - only if a number button is pressed after the equal)
     if(expression.slice(-1) == "=") {
         expression = ""
     }
     
+//prevents more than one decimal point
+    if (display.innerHTML.includes(".") && event.target.value == "."){
+        display.innerHTML = display.innerHTML
+        expression = expression
+
+    } else {
 //adds the button clicked to whats already in the display rather than replacing it
-    display.innerHTML += event.target.value
+        display.innerHTML += event.target.value
+
 //adds a number to the string expression when button clicked
-    expression += event.target.value
+        expression += event.target.value
+
+    }
     console.log(expression)
 
 //changes the AC button back to C, allowing a reset if there is a number
@@ -89,7 +96,6 @@ const operatorButtonClickEvent = (event) =>{
     if(expression.slice(-1) == "=") {
         expression = display.innerHTML
     }
-
 
 //stores the operator in a variable to add to the expression
     if (event.target.value == "+") {
