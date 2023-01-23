@@ -35,7 +35,7 @@
   align-items: flex-end;
 }
 
-#display__text {
+#display_text {
   font-size: 60px;
   padding-right: 0.8rem;
   padding-left: 0.8rem;
@@ -68,18 +68,24 @@
 .buttons__operator {
   background-color: rgb(243, 163, 60);
   font-size: 40px;
+  padding-bottom: 6px;
+  padding-right: 2px;
 }
 .buttons__extra {
   background-color: rgb(165, 165, 165);
   color: black;
 }
 
-#buttons__equal:focus {
+#equal:focus {
   background-color: rgb(243, 163, 60);
   color: white;
 }
 
-#buttons__del {
+#del {
   background-color: rgb(50, 50, 50);
   color: white;
+}
+
+#reset {
+  font-size: 25px;
 }/*# sourceMappingURL=style.css.map */

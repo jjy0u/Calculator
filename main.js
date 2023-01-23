@@ -1,10 +1,10 @@
-const display = document.querySelector("#display__text")
+const display = document.querySelector("#display_text")
 const numberButtons = document.querySelectorAll(".buttons__number")
 const operatorButtons = document.querySelectorAll(".buttons__operator")
-const resetButton = document.querySelector("#buttons__reset")
-const percentButton = document.querySelector("#buttons__percent")
-const negativeButton = document.querySelector("#buttons__negative")
-const deleteButton = document.querySelector("#buttons__del")
+const resetButton = document.querySelector("#reset")
+const percentButton = document.querySelector("#percent")
+const negativeButton = document.querySelector("#negative")
+const deleteButton = document.querySelector("#del")
 
 let expression = ""
 let operator
@@ -64,7 +64,6 @@ const numberButtonClickEvent = (event) =>{
         display.innerHTML = "0"
     }
 
-    
 //resets the expression to nothing after the equal sign is clicked (starts a new expression - only if a number button is pressed after the equal)
     if(expression.slice(-1) == "=") {
         expression = ""
@@ -102,13 +101,13 @@ const operatorButtonClickEvent = (event) =>{
         operator = "+"
         display.innerHTML = turnStringIntoExpression(expression).toString()
 
-    } else if (event.target.value == "-") {    
+    } else if (event.target.value == "−") {    
         operator = "-"
         display.innerHTML = turnStringIntoExpression(expression).toString()
-    } else if (event.target.value == "/") {    
+    } else if (event.target.value == "÷") {    
         operator = "/"
         display.innerHTML = turnStringIntoExpression(expression).toString()
-    } else if (event.target.value == "x") {    
+    } else if (event.target.value == "×") {    
         operator = "*"
         display.innerHTML = turnStringIntoExpression(expression).toString()
     } else if (event.target.value == "=") {   
@@ -121,8 +120,6 @@ const operatorButtonClickEvent = (event) =>{
     expression = display.innerHTML + operator
 }
 console.log(expression)
-
-
 
 const resetButtonClickEvent = (event) =>{
 //when the C button is pressed, will change to AC
@@ -195,7 +192,6 @@ const negativeButtonClickEvent = (event) =>{
         expression = expression.slice(expression.indexOf("=")).slice(1)
     }
 }
-
 
 numberButtons.forEach((numberButton) => {
     numberButton.addEventListener("click", numberButtonClickEvent)

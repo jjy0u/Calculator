@@ -39,6 +39,8 @@
     &__operator{
         background-color: $operator-buttons-colour;
         font-size: 40px;
+        padding-bottom: 6px;
+        padding-right: 2px;
     }
 
     &__extra{
@@ -47,13 +49,17 @@
     }
 }
 
-#buttons__equal:focus{
+#equal:focus{
     background-color: $operator-buttons-colour;
     color: $primary-text-colour;
 }
 
 
-#buttons__del{
+#del{
     background-color: $number-buttons-colour;
     color: $primary-text-colour;
+}
+
+#reset{
+    font-size: 25px;
 }
