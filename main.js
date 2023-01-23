@@ -74,15 +74,25 @@ const numberButtonClickEvent = (event) =>{
         display.innerHTML = display.innerHTML
         expression = expression
 
+    } else if (display.innerHTML.length >= 8) {
+        display.innerHTML = display.innerHTML
+        expression = expression
     } else {
 //adds the button clicked to whats already in the display rather than replacing it
         display.innerHTML += event.target.value
 
 //adds a number to the string expression when button clicked
         expression += event.target.value
-
     }
     console.log(expression)
+
+    /*if(display.innerHTML.length >= 8) {
+        display.innerHTML = display.innerHTML
+        expression = expression
+    } else{
+        display.innerHTML += event.target.value
+        expression += event.target.value
+    }*/
 
 //changes the AC button back to C, allowing a reset if there is a number
     if (resetButton.value == "AC"){
