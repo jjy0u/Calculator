@@ -44,7 +44,7 @@ const turnStringIntoExpression = (expression) => {
         })
         return expressionSplit[0] - expressionSplit[1]
     } else {
-        return Number(expression)
+        return 1*Number(expression)
     }
 }
 
@@ -73,7 +73,7 @@ const numberButtonClickEvent = (event) =>{
     if (display.innerHTML.includes(".") && event.target.value == "."){
         display.innerHTML = display.innerHTML
         expression = expression
-
+//prevents number from getting larger than the screen
     } else if (display.innerHTML.length >= 8) {
         display.innerHTML = display.innerHTML
         expression = expression
@@ -121,9 +121,14 @@ const operatorButtonClickEvent = (event) =>{
         operator = "*"
         display.innerHTML = turnStringIntoExpression(expression).toString()
     } else if (event.target.value == "=") {   
-        operator = "="     
-        display.innerHTML = turnStringIntoExpression(expression).toString()
-        
+        operator = "="  
+        if (expression.includes(".") && expression.length <= 7) {
+        display.innerHTML = 1* (turnStringIntoExpression(expression).toFixed(7)).toString()   
+        } else if (expression.length >= 7) {
+        display.innerHTML =  turnStringIntoExpression(expression).toExponential(3).toString()
+        } else{
+            display.innerHTML = turnStringIntoExpression(expression).toString()
+        }
     }
 
 //whatever is in the display has the operator added to it, forming the expression
