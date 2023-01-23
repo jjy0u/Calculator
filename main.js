@@ -137,6 +137,11 @@ const deleteButtonClickEvent = (event) =>{
         expression = expression.slice(0,-1)
         display.innerHTML = display.innerHTML.slice(0,-1)
     }
+
+    if (display.innerHTML == "0") {
+        display.innerHTML
+        expression
+    }
 }
 
 const percentButtonClickEvent = (event) =>{
