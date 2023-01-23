@@ -33,8 +33,13 @@ const turnStringIntoExpression = (expression) => {
             return Number(element)
         })
         return expressionSplit[0] + expressionSplit[1]
+    } else if (expression.split("-").length==3){
+        const expressionSplit = expression.split("-").map((element) =>{
+            return Number(element)
+        })
+        return -expressionSplit[1] - expressionSplit[2]
     } else if (expression.includes("-")){
-        const expressionSplit = expression.split(expression.lastIndexOf("-")).map((element) =>{
+        const expressionSplit = expression.split("-").map((element) =>{
             return Number(element)
         })
         return expressionSplit[0] - expressionSplit[1]
