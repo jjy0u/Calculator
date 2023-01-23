@@ -133,9 +133,16 @@ const deleteButtonClickEvent = (event) =>{
     if (expression.slice(-1) == operator){
         expression
         display.innerHTML
+    } else if (display.innerHTML == "0"){
+        display.innerHTML
+        expression
     } else {
         expression = expression.slice(0,-1)
         display.innerHTML = display.innerHTML.slice(0,-1)
+    }
+//means when all the numbers are removed a 0 replaces the blank
+    if (display.innerHTML == "") {
+        display.innerHTML = "0"
     }
 }
 
