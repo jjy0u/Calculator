@@ -55,10 +55,16 @@ const numberButtonClickEvent = (event) =>{
     } 
 
 //if the display is just a 0 then a button is pressed, remove the 0 - solves issue of multiple unecessary 0's before number NOTE: can this be combined with line 13 if statement with an ||?
-    if(display.innerHTML == 0) {
+    if(display.innerHTML == "0") {
         display.innerHTML = ""
-    } else if (display.innerHTML == ".") {
-        display.innerHTML = "0."
+    } 
+    
+    if (event.target.value == "." && display.innerHTML == "0") {
+        display.innerHTML = "0"
+    }
+
+    if (display.innerHTML.includes(".") && event.target.value == "."){
+
     }
     
 //resets the expression to nothing after the equal sign is clicked (starts a new expression - only if a number button is pressed after the equal)
