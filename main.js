@@ -86,14 +86,6 @@ const numberButtonClickEvent = (event) =>{
     }
     console.log(expression)
 
-    /*if(display.innerHTML.length >= 8) {
-        display.innerHTML = display.innerHTML
-        expression = expression
-    } else{
-        display.innerHTML += event.target.value
-        expression += event.target.value
-    }*/
-
 //changes the AC button back to C, allowing a reset if there is a number
     if (resetButton.value == "AC"){
         resetButton.value = "C"
