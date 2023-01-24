@@ -15,36 +15,36 @@ let stringAnswer
 const turnStringIntoExpression = (expression) => {
     if (expression.includes("+")){
         const expressionSplit = expression.split("+").map((element) =>{
-            return 1* Number(element)
+            return Number(element)
         })
         return expressionSplit[0] + expressionSplit[1]
     } else if (expression.includes("*")){
         const expressionSplit = expression.split("*").map((element) =>{
-            return 1*Number(element)
+            return Number(element)
         })
         return expressionSplit[0] * expressionSplit[1]
     } else if (expression.includes("/")){
         const expressionSplit = expression.split("/").map((element) =>{
-            return 1*Number(element)
+            return Number(element)
         })
         return expressionSplit[0] / expressionSplit[1]
     } else if (expression.includes("--")){
         const expressionSplit = expression.split("--").map((element) =>{
-            return 1*Number(element)
+            return Number(element)
         })
         return expressionSplit[0] + expressionSplit[1]
     } else if (expression.split("-").length==3){
         const expressionSplit = expression.split("-").map((element) =>{
-            return 1*Number(element)
+            return Number(element)
         })
         return -expressionSplit[1] - expressionSplit[2]
     } else if (expression.includes("-")){
         const expressionSplit = expression.split("-").map((element) =>{
-            return 1*Number(element)
+            return Number(element)
         })
         return expressionSplit[0] - expressionSplit[1]
     } else {
-        return 1*Number(expression)
+        return Number(expression)
     }
 }
 
@@ -101,29 +101,50 @@ const operatorButtonClickEvent = (event) =>{
 //stores the operator in a variable to add to the expression
     if (event.target.value == "+") {
         operator = "+"
-        display.innerHTML = turnStringIntoExpression(expression).toString()
-
+        if (expression.includes(".") && expression.length>=10) {
+            display.innerHTML = turnStringIntoExpression(expression).toExponential(3).toString()
+        } else if (expression.includes(".") || expression.length<10) {
+            display.innerHTML = 1*(turnStringIntoExpression(expression).toFixed(7)).toString()   
+        } else{
+            display.innerHTML =  turnStringIntoExpression(expression).toExponential(3).toString()
+        }    
     } else if (event.target.value == "−") {    
         operator = "-"
-        display.innerHTML = turnStringIntoExpression(expression).toString()
+        if (expression.includes(".") && expression.length>=10) {
+            display.innerHTML = turnStringIntoExpression(expression).toExponential(3).toString()
+        } else if (expression.includes(".") || expression.length<10) {
+            display.innerHTML = 1*(turnStringIntoExpression(expression).toFixed(7)).toString()   
+        } else{
+            display.innerHTML =  turnStringIntoExpression(expression).toExponential(3).toString()
+        }    
     } else if (event.target.value == "÷") {    
         operator = "/"
-        display.innerHTML = turnStringIntoExpression(expression).toString()
+        if (expression.includes(".") && expression.length>=10) {
+            display.innerHTML = turnStringIntoExpression(expression).toExponential(3).toString()
+        } else if (expression.includes(".") || expression.length<10) {
+            display.innerHTML = 1*(turnStringIntoExpression(expression).toFixed(7)).toString()   
+        } else{
+            display.innerHTML =  turnStringIntoExpression(expression).toExponential(3).toString()
+        }    
     } else if (event.target.value == "×") {    
         operator = "*"
-        display.innerHTML = turnStringIntoExpression(expression).toString()
+        if (expression.includes(".") && expression.length>=10) {
+            display.innerHTML = turnStringIntoExpression(expression).toExponential(3).toString()
+        } else if (expression.includes(".") || expression.length<10) {
+            display.innerHTML = 1*(turnStringIntoExpression(expression).toFixed(7)).toString()   
+        } else{
+            display.innerHTML =  turnStringIntoExpression(expression).toExponential(3).toString()
+        }
     } else if (event.target.value == "=") {   
         operator = "="  
-        //deals with the answer being too large for screen and massive answer w/ decimal points
-        if (expression.includes(".") && expression.length <= 7) {
-        display.innerHTML = 1* (turnStringIntoExpression(expression).toFixed(7)).toString()   
-        } else if (expression.length >= 7) {
-        display.innerHTML =  turnStringIntoExpression(expression).toExponential(3).toString()
+        if (expression.includes(".") && expression.length>=10) {
+            display.innerHTML = turnStringIntoExpression(expression).toExponential(3).toString()
+        } else if (expression.includes(".") || expression.length<10) {
+            display.innerHTML = 1*(turnStringIntoExpression(expression).toFixed(7)).toString()   
         } else{
-            display.innerHTML = turnStringIntoExpression(expression).toString()
+            display.innerHTML =  turnStringIntoExpression(expression).toExponential(3).toString()
         }
     }
-
 //whatever is in the display has the operator added to it, forming the expression
     expression = display.innerHTML + operator
 }
