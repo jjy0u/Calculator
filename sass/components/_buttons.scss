@@ -1,0 +1,59 @@
+
+.buttons{
+    &__button{
+    border: none;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 4rem;
+    text-align: center;
+    font-size: 30px;
+    }
+
+    &__button:active{
+        filter:brightness(150%)
+    }
+
+    &__operator:focus{
+        background-color: white;
+        color: $operator-buttons-colour;
+    }
+
+    &__operator:active{
+        filter:brightness(120%);
+    }
+
+    &__extra:active{
+        filter:brightness(120%);
+    }
+
+    &__number{
+        background-color: $number-buttons-colour;
+    }
+
+    &__operator{
+        background-color: $operator-buttons-colour;
+        font-size: 40px;
+        padding-bottom: 6px;
+        padding-right: 2px;
+    }
+
+    &__extra{
+        background-color: $extra-buttons-colour;
+        color: $secondary-text-colour;
+    }
+}
+
+#equal:focus{
+    background-color: $operator-buttons-colour;
+    color: $primary-text-colour;
+}
+
+
+#del{
+    background-color: $number-buttons-colour;
+    color: $primary-text-colour;
+}
+
+#reset{
+    font-size: 25px;
+}
