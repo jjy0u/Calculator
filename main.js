@@ -15,32 +15,32 @@ let stringAnswer
 const turnStringIntoExpression = (expression) => {
     if (expression.includes("+")){
         const expressionSplit = expression.split("+").map((element) =>{
-            return Number(element)
+            return 1* Number(element)
         })
         return expressionSplit[0] + expressionSplit[1]
     } else if (expression.includes("*")){
         const expressionSplit = expression.split("*").map((element) =>{
-            return Number(element)
+            return 1*Number(element)
         })
         return expressionSplit[0] * expressionSplit[1]
     } else if (expression.includes("/")){
         const expressionSplit = expression.split("/").map((element) =>{
-            return Number(element)
+            return 1*Number(element)
         })
         return expressionSplit[0] / expressionSplit[1]
     } else if (expression.includes("--")){
         const expressionSplit = expression.split("--").map((element) =>{
-            return Number(element)
+            return 1*Number(element)
         })
         return expressionSplit[0] + expressionSplit[1]
     } else if (expression.split("-").length==3){
         const expressionSplit = expression.split("-").map((element) =>{
-            return Number(element)
+            return 1*Number(element)
         })
         return -expressionSplit[1] - expressionSplit[2]
     } else if (expression.includes("-")){
         const expressionSplit = expression.split("-").map((element) =>{
-            return Number(element)
+            return 1*Number(element)
         })
         return expressionSplit[0] - expressionSplit[1]
     } else {
@@ -122,6 +122,7 @@ const operatorButtonClickEvent = (event) =>{
         display.innerHTML = turnStringIntoExpression(expression).toString()
     } else if (event.target.value == "=") {   
         operator = "="  
+        //deals with the answer being too large for screen and massive answer w/ decimal points
         if (expression.includes(".") && expression.length <= 7) {
         display.innerHTML = 1* (turnStringIntoExpression(expression).toFixed(7)).toString()   
         } else if (expression.length >= 7) {
